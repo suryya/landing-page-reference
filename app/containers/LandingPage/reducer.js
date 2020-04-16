@@ -1,10 +1,8 @@
 /* eslint-disable */
-//import { handleActions } from 'redux-actions';
 import immutable from 'immutability-helper';
 import { REHYDRATE } from 'redux-persist/lib/constants';
 import isEmpty from 'lodash/isEmpty';
 
-/// LOGIN_USER_DATA, LOGIN_USER_DATA_SUCCESS, LOGIN_USER_DATA_ERROR , 
 // Action types
 import {
   FETCH_EMPLOYEES, FETCH_EMPLOYEES_SUCCESS, FETCH_EMPLOYEES_ERROR,
@@ -50,8 +48,6 @@ export default function employeeReducer(stateVal = employeeState, action) {
       let err = (payload && !isEmpty(payload.error) && payload.error) || '';
       err = !isEmpty(err) ? err : (payload && payload.msg) || '';
       err = !err || 'Error'
-      // const emailErr = /email/g.test(err) ? err : '';
-      // const passwordErr = /password/g.test(err) ? err : '';
 
       return immutable(state, {
         loading: { $set: false },
