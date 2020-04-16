@@ -1,11 +1,9 @@
-// import { REHYDRATE, FETCH_EMPLOYEES, FETCH_EMPLOYEES_SUCCESS } from 'redux-persist/lib/constants';
 import employeeReducer from '../reducer';
 
 import {
   fetchEmployees, fetchEmployeesSuccess, fetchEmployeesError,
   fetchSingleEmployeeSuccess, fetchSingleEmployee, fetchSingleEmployeeError
 } from '../actions';
-// import { changeUsername } from '../actions';
 
 describe('employeeReducer', () => {
   let state;

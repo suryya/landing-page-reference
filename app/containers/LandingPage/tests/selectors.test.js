@@ -1,10 +1,12 @@
 import {
-  selectEmployees, makeSelectEmployeesStatus,
-  selectSingleEmployee, makeSelectSingleEmployeeStatus
+  selectEmployees,
+  makeSelectEmployeesStatus,
+  selectSingleEmployee,
+  makeSelectSingleEmployeeStatus,
 } from '../selectors';
-/* eslint-disable */
 
-const employeesList = [{
+const employeesList = [
+  {
     id: 1,
     employeeId: 'Emp123',
     name: 'john dow',
@@ -12,38 +14,35 @@ const employeesList = [{
     addresses: [
       {
         id: 1,
-        location: 'Kolkata'
+        location: 'Kolkata',
       },
       {
         id: 2,
-        location: 'Delhi'
+        location: 'Delhi',
       },
       {
         id: 3,
-        location: 'Bombay'
+        location: 'Bombay',
       },
       {
         id: 4,
-        location: 'Hydrabad'
-      }
-    ]
-  }]   
+        location: 'Hydrabad',
+      },
+    ],
+  },
+];
 const employeeState = {
-    employees: {
-        list:employeesList,
-        single: employeesList[0]
-    }
-    
+  employees: {
+    list: employeesList,
+    single: employeesList[0],
+  },
 };
-
 
 describe('selectEmployees', () => {
   it('should select the Employees', () => {
-
     expect(selectEmployees(employeeState)).toEqual(employeesList);
   });
 });
-
 
 describe('selectSingleEmployee', () => {
   it('should select the single Employees', () => {
@@ -57,7 +56,6 @@ describe('makeSelectUsername', () => {
     expect(employeesSelector(employeeState)).toEqual(employeesList);
   });
 });
-
 
 describe('makeSelectSingleEmployeeStatus', () => {
   const employeeSingleSelector = makeSelectSingleEmployeeStatus();
