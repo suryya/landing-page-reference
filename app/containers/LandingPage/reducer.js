@@ -1,4 +1,3 @@
-/* eslint-disable */
 import immutable from 'immutability-helper';
 import { REHYDRATE } from 'redux-persist/lib/constants';
 import isEmpty from 'lodash/isEmpty';
@@ -14,44 +13,41 @@ export const employeeState = {
   loading: false,
   error: null,
   loaded: false,
-  list:[],
-  single:null
+  list: [],
+  single: null
 };
 
 
 export default function employeeReducer(stateVal = employeeState, action) {
-
   const stateAactions = {
     [REHYDRATE]: (state) => immutable(state, {
       success: { $set: false },
       loading: { $set: false },
       error: { $set: null },
       loaded: { $set: false },
-      list:  { $set: [] },
-      single:{}
+      list: { $set: [] },
+      single: {}
     }),
     [FETCH_EMPLOYEES]: (state) => immutable(state, {
       loading: { $set: true },
       success: { $set: false },
       loaded: { $set: false }
     }),
-    [FETCH_EMPLOYEES_SUCCESS]: (state, { payload }) => {
-      return immutable(state, {
-        list: { $set: (payload) || [] },
-        loading: { $set: false },
-        success: { $set: true },
-        error: { $set: null },
-        loaded: { $set: true }
-      });
-    },
+    [FETCH_EMPLOYEES_SUCCESS]: (state, { payload }) => immutable(state, {
+      list: { $set: (payload) || [] },
+      loading: { $set: false },
+      success: { $set: true },
+      error: { $set: null },
+      loaded: { $set: true }
+    }),
     [FETCH_EMPLOYEES_ERROR]: (state, { payload }) => {
       let err = (payload && !isEmpty(payload.error) && payload.error) || '';
       err = !isEmpty(err) ? err : (payload && payload.msg) || '';
-      err = !err || 'Error'
+      err = !err || 'Error';
 
       return immutable(state, {
         loading: { $set: false },
-        error: { $set: { message: err} },
+        error: { $set: { message: err } },
         success: { $set: false },
         loaded: { $set: true }
       });
@@ -61,30 +57,28 @@ export default function employeeReducer(stateVal = employeeState, action) {
       success: { $set: false },
       loaded: { $set: false }
     }),
-    [FETCH_SINGLE_EMPLOYEE_SUCCESS]: (state, { payload }) => {
-      return immutable(state, {
-        single: { $set: (payload) || [] },
-        loading: { $set: false },
-        success: { $set: true },
-        error: { $set: null },
-        loaded: { $set: true }
-      });
-    },
+    [FETCH_SINGLE_EMPLOYEE_SUCCESS]: (state, { payload }) => immutable(state, {
+      single: { $set: (payload) || [] },
+      loading: { $set: false },
+      success: { $set: true },
+      error: { $set: null },
+      loaded: { $set: true }
+    }),
     [FETCH_SINGLE_EMPLOYEE_ERROR]: (state, { payload }) => {
       let err = (payload && !isEmpty(payload.error) && payload.error) || '';
       err = !isEmpty(err) ? err : (payload && payload.msg) || '';
-      err = !err || 'Error'
+      err = !err || 'Error';
       // const emailErr = /email/g.test(err) ? err : '';
       // const passwordErr = /password/g.test(err) ? err : '';
 
       return immutable(state, {
         loading: { $set: false },
-        error: { $set: { message: err} },
+        error: { $set: { message: err } },
         success: { $set: false },
         loaded: { $set: true }
       });
     },
 
-  }
+  };
   return stateAactions[action.type] ? stateAactions[action.type](stateVal, action) : stateVal;
 }

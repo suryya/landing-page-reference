@@ -151,12 +151,12 @@ export const Addresses = (props) => {
   const { addresses, name } = employee;
   return (
     <>
-      {addresses && addresses.length == 0 ? (
+      {addresses && addresses.length === 0 ? (
         <FullWidthBlockDiv data-testid="employee-addresses">
           <FullWidthBlockDiv>
             <Caption>
               <Block>
-                <b>{`${name}'s`}</b> doesn't have any address
+                <b>{`${name}'s`}</b> {'doesn\'t have any address'}
               </Block>
             </Caption>
           </FullWidthBlockDiv>

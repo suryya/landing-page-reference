@@ -1,29 +1,18 @@
-/* eslint-disable */
 import { createSelector } from 'reselect';
 
 
-const selectEmployees = (state) => {
-    
-  return ( state && state.employees && state.employees.list) ? state.employees.list : []
-}
+const selectEmployees = (state) => ((state && state.employees && state.employees.list) ? state.employees.list : []);
 
-const selectSingleEmployee = (state) => {
-    
-  return ( state && state.employees && state.employees.single) ? state.employees.single : null
-}
+const selectSingleEmployee = (state) => ((state && state.employees && state.employees.single) ? state.employees.single : null);
 
 const makeSelectEmployeesStatus = () => createSelector(
   selectEmployees,
-  (employees) => {
-    return employees || null
-    }
+  (employees) => employees || null
 );
 
 const makeSelectSingleEmployeeStatus = () => createSelector(
   selectSingleEmployee,
-  (single) => {
-    return single || null
-    }
+  (single) => single || null
 );
 
 export {
