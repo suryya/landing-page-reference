@@ -18,7 +18,7 @@
 1. Clone this repo`
 2. Move to the appropriate directory: `cd <cloned-repo>`.<br />
 3. Run `yarn` or `npm install` to install dependencies.<br />
-4. Run `npm start` to see the example app at `http://localhost:3000`.
+4. Run `npm start` to see the example app at `http://localhost:4000`.
 
 Now you're ready build your beautiful React Application!
 
